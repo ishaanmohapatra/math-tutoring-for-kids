@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrightPath Math — Friendly Math Tutoring for Kids</title>
+<style>
+  :root{
+    --cream:#FFF8EC;
+    --cream-dark:#FCEEDA;
+    --coral:#FF7A59;
+    --coral-dark:#E85F3D;
+    --navy:#233A5E;
+    --navy-light:#4A6285;
+    --green:#2F855A;
+    --green-light:#E4F3EA;
+    --yellow:#FFD166;
+    --radius:16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    background:var(--cream);
+    color:var(--navy);
+    line-height:1.6;
+  }
+
+  img,svg{display:block;max-width:100%;}
+
+  a{color:inherit;}
+
+  .container{
+    width:100%;
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:var(--cream);
+    border-bottom:3px solid var(--yellow);
+  }
+
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 20px;
+  }
+
+  .logo{
+    font-size:1.4rem;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:-0.5px;
+  }
+  .logo span{color:var(--coral);}
+
+  nav ul{
+    list-style:none;
+    display:none;
+    gap:24px;
+  }
+
+  nav a{
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--navy-light);
+  }
+  nav a:hover{color:var(--coral);}
+
+  .header-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+
+  .login-link{
+    font-size:0.9rem;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--navy-light);
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--coral);
+    color:#fff;
+    padding:12px 24px;
+    border-radius:999px;
+    font-weight:700;
+    text-decoration:none;
+    font-size:0.95rem;
+    box-shadow:0 4px 0 var(--coral-dark);
+    transition:transform 0.15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn.small{padding:9px 18px;font-size:0.85rem;box-shadow:0 3px 0 var(--coral-dark);}
+
+  @media(min-width:820px){
+    nav ul{display:flex;}
+  }
+
+  /* Hero */
+  .hero{
+    padding:70px 0 60px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, var(--yellow) 0, transparent 8%),
+      radial-gradient(circle at 85% 30%, var(--green-light) 0, transparent 10%),
+      var(--cream);
+  }
+
+  .hero h1{
+    font-size:2.2rem;
+    max-width:720px;
+    margin:0 auto 18px;
+    color:var(--navy);
+    line-height:1.25;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--coral);
+  }
+
+  .hero p{
+    max-width:560px;
+    margin:0 auto 30px;
+    font-size:1.1rem;
+    color:var(--navy-light);
+  }
+
+  .hero-badges{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:34px;
+    font-size:0.85rem;
+    color:var(--navy-light);
+  }
+  .hero-badges span{
+    background:#fff;
+    padding:6px 14px;
+    border-radius:999px;
+    border:1px solid #eee;
+  }
+
+  @media(min-width:640px){
+    .hero h1{font-size:2.8rem;}
+  }
+
+  /* Learning Mode Section */
+  .learning-mode{
+    background:var(--navy);
+    color:#fff;
+    padding:60px 0;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .learning-mode::before{
+    content:"";
+    position:absolute;
+    top:-60px;
+    right:-60px;
+    width:220px;
+    height:220px;
+    background:var(--coral);
+    opacity:0.15;
+    border-radius:50%;
+  }
+
+  .lm-badge{
+    display:inline-block;
+    background:var(--yellow);
+    color:var(--navy);
+    font-weight:800;
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:0.8rem;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+
+  .learning-mode h2{
+    font-size:1.9rem;
+    max-width:600px;
+    margin-bottom:18px;
+  }
+
+  .lm-grid{
+    display:grid;
+    gap:20px;
+    margin-top:34px;
+    grid-template-columns:1fr;
+  }
+
+  @media(min-width:760px){
+    .lm-grid{grid-template-columns:repeat(3,1fr);}
+  }
+
+  .lm-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+
+  .lm-card h3{
+    font-size:1.1rem;
+    margin-bottom:8px;
+    color:var(--yellow);
+  }
+
+  .lm-card p{
+    font-size:0.95rem;
+    color:#dbe3ee;
+  }
+
+  .lm-text{
+    max-width:640px;
+    font-size:1.05rem;
+    color:#dbe3ee;
+  }
+
+  /* Offerings */
+  .offerings{
+    padding:70px 0;
+  }
+
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 46px;
+  }
+
+  .section-head h2{
+    font-size:2rem;
+    margin-bottom:12px;
+    color:var(--navy);
+  }
+
+  .section-head p{
+    color:var(--navy-light);
+  }
+
+  .cards{
+    display:grid;
+    gap:24px;
+    grid-template-columns:1fr;
+  }
+
+  @media(min-width:640px){
+    .cards{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(min-width:980px){
+    .cards{grid-template-columns:repeat(3,1fr);}
+  }
+
+  .card{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:28px 24px;
+    border:1px solid #f0e6d8;
+    box-shadow:0 6px 18px rgba(35,58,94,0.05);
+  }
+
+  .card .icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    background:var(--green-light);
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:1.2rem;
+    margin-bottom:16px;
+  }
+
+  .card h3{
+    font-size:1.15rem;
+    margin-bottom:10px;
+    color:var(--navy);
+  }
+
+  .card p{
+    font-size:0.95rem;
+    color:var(--navy-light);
+  }
+
+  /* About */
+  .about{
+    background:var(--cream-dark);
+    padding:70px 0;
+  }
+
+  .about-inner{
+    display:grid;
+    gap:40px;
+    grid-template-columns:1fr;
+    align-items:center;
+  }
+
+  @media(min-width:860px){
+    .about-inner{grid-template-columns:1fr 1fr;}
+  }
+
+  .about h2{
+    font-size:1.9rem;
+    margin-bottom:16px;
+    color:var(--navy);
+  }
+
+  .about p{
+    color:var(--navy-light);
+    margin-bottom:14px;
+  }
+
+  .stats{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    margin-top:24px;
+  }
+
+  .stat h4{
+    font-size:1.6rem;
+    color:var(--coral);
+  }
+  .stat span{
+    font-size:0.85rem;
+    color:var(--navy-light);
+  }
+
+  .quote-box{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:30px;
+    border-left:5px solid var(--coral);
+  }
+
+  .quote-box p{
+    font-style:italic;
+    color:var(--navy);
+    margin-bottom:14px;
+  }
+
+  .quote-box strong{
+    color:var(--navy-light);
+    font-style:normal;
+  }
+
+  /* CTA strip */
+  .cta-strip{
+    background:var(--coral);
+    color:#fff;
+    text-align:center;
+    padding:56px 0;
+  }
+  .cta-strip h2{
+    font-size:1.8rem;
+    margin-bottom:14px;
+  }
+  .cta-strip p{
+    margin-bottom:26px;
+    color:#fff6f2;
+  }
+  .cta-strip .btn{
+    background:#fff;
+    color:var(--coral);
+    box-shadow:0 4px 0 rgba(0,0,0,0.1);
+  }
+
+  /* Footer */
+  footer{
+    background:var(--navy);
+    color:#c9d4e3;
+    padding:44px 0 24px;
+    font-size:0.9rem;
+  }
+
+  .footer-grid{
+    display:grid;
+    gap:24px;
+    grid-template-columns:1fr;
+    margin-bottom:24px;
+  }
+
+  @media(min-width:640px){
+    .footer-grid{grid-template-columns:2fr 1fr 1fr;}
+  }
+
+  .footer-grid h4{
+    color:#fff;
+    margin-bottom:10px;
+    font-size:1rem;
+  }
+
+  .footer-grid ul{
+    list-style:none;
+  }
+  .footer-grid li{margin-bottom:8px;}
+  .footer-grid a{text-decoration:none;color:#c9d4e3;}
+  .footer-grid a:hover{color:var(--yellow);}
+
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:18px;
+    text-align:center;
+    color:#8fa0bd;
+    font-size:0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner container">
+    <div class="logo">Bright<span>Path</span> Math</div>
+    <nav>
+      <ul>
+        <li><a href="#offerings">Offerings</a></li>
+        <li><a href="#learning-mode">Learning Mode</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="login-link" href="login.html">Log in</a>
+      <a class="btn small" href="pay.html">Book a Lesson</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>Math tutoring that turns <em>"I don't get it"</em> into "I've got this."</h1>
+      <p>One-on-one online tutoring for kids ages 6–14, led by patient, certified teachers who make numbers make sense.</p>
+      <a class="btn" href="pay.html">Book a Free Trial Lesson</a>
+      <div class="hero-badges">
+        <span>🎓 Certified teachers</span>
+        <span>🕐 30-min sessions</span>
+        <span>👨‍👩‍👧 Parent progress reports</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning-mode" id="learning-mode">
+    <div class="container">
+      <span class="lm-badge">Our Signature Approach</span>
+      <h2>Every lesson starts in Learning Mode.</h2>
+      <p class="lm-text">No grades. No clock. No pressure. Learning Mode is the calm, judgment-free space where your child actually gets to think — ask questions twice, try a wrong answer, and figure things out at their own pace before we ever talk tests or timing.</p>
+      <div class="lm-grid">
+        <div class="lm-card">
+          <h3>🧠 Learning Mode</h3>
+          <p>Where every session begins. Mistakes are just information here — we slow down until the concept clicks, not just the answer.</p>
+        </div>
+        <div class="lm-card">
+          <h3>✏️ Practice Mode</h3>
+          <p>Once it clicks, we build speed and confidence with fun, low-stakes drills that feel more like a game than homework.</p>
+        </div>
+        <div class="lm-card">
+          <h3>🏆 Confidence Check</h3>
+          <p>A gentle, encouraging check-in to show your child (and you) exactly how far they've come — no report-card anxiety.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offerings" id="offerings">
+    <div class="container">
+      <div class="section-head">
+        <h2>How we help your kid with math</h2>
+        <p>Simple, focused sessions built around your child's grade level and the topics giving them trouble right now.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">1:1</div>
+          <h3>Private Online Tutoring</h3>
+          <p>Weekly one-on-one sessions matched to your child's exact grade, curriculum, and pace. No shared attention, ever.</p>
+        </div>
+        <div class="card">
+          <div class="icon">HW</div>
+          <h3>Homework Rescue</h3>
+          <p>Stuck tonight? Book a same-week session to walk through tonight's worksheet, step by step, without the tears.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✔</div>
+          <h3>Test & Exam Prep</h3>
+          <p>We turn test anxiety into a game plan — practice problems, timing strategies, and calm confidence going in.</p>
+        </div>
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>Small Group Pods</h3>
+          <p>Groups of 2–3 similar-level kids who learn together at a friendly discount, with all the same care.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>Progress Reports</h3>
+          <p>A short, plain-language note after every month so you always know exactly what's improving and what's next.</p>
+        </div>
+        <div class="card">
+          <div class="icon">☀</div>
+          <h3>Summer Math Camp</h3>
+          <p>A light, no-pressure summer program to stop the "summer slide" and start next year a step ahead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div>
+        <h2>Built by teachers who remember hating math homework too.</h2>
+        <p>BrightPath Math was started by a former elementary school teacher who noticed the same thing over and over: kids weren't bad at math, they were just scared of getting it wrong. So we built lessons around that — patient, one-on-one, and pressure-free.</p>
+        <p>Every tutor is background-checked, trained in our Learning Mode method, and genuinely likes working with kids (we ask, and we check references).</p>
+        <div class="stats">
+          <div class="stat"><h4>1,200+</h4><span>Kids tutored</span></div>
+          <div class="stat"><h4>4.9★</h4><span>Average parent rating</span></div>
+          <div class="stat"><h4>92%</h4><span>Grade improvement in 8 weeks</span></div>
+        </div>
+      </div>
+      <div class="quote-box">
+        <p>"My daughter used to cry over fractions. After a few weeks of Learning Mode sessions, she actually asks to do her math homework first. I still can't believe it."</p>
+        <strong>— Priya M., parent of a 4th grader</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container">
+      <h2>Ready to see the difference a calm lesson makes?</h2>
+      <p>Your first session is on us — no worksheet packet, just a real conversation about where your child is stuck.</p>
+      <a class="btn" href="pay.html">Book Your Free Trial</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BrightPath Math</h4>
+        <p>Friendly, one-on-one math tutoring for kids ages 6–14. Sessions held online, worldwide.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#offerings">Offerings</a></li>
+          <li><a href="#learning-mode">Learning Mode</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="login.html">Parent Log In</a></li>
+          <li><a href="pay.html">Book a Lesson</a></li>
+          <li><a href="mailto:hello@brightpathmath.example">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 BrightPath Math. Made with patience, one lesson at a time.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
