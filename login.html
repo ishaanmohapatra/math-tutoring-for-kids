@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Math Tutoring For Kids</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Math Tutoring For Kids</h1>
+                <p>Access Your Business Dashboard</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active-form">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <div class="form-remember">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <p class="form-divider">or</p>
+                <button type="button" class="btn btn-google btn-block" onclick="loginWithGoogle()">
+                    <span>🔐</span> Login with Google
+                </button>
+            </form>
+
+            <!-- Signup Form (hidden by default) -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="••••••••" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password-confirm">Confirm Password</label>
+                    <input type="password" id="signup-password-confirm" placeholder="••••••••" required>
+                </div>
+                <div class="form-agreement">
+                    <input type="checkbox" id="agree-terms" required>
+                    <label for="agree-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p id="toggle-form-text">
+                    Don't have an account? <a href="#" id="toggle-form">Sign up</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="auth-benefits">
+            <div class="benefit-item">
+                <span class="benefit-icon">🚀</span>
+                <p><strong>Get Started Fast</strong><br>Launch in minutes, no tech skills needed</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">🔒</span>
+                <p><strong>Secure & Reliable</strong><br>Enterprise-grade security for your data</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">💪</span>
+                <p><strong>Full Control</strong><br>Manage everything from one dashboard</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
