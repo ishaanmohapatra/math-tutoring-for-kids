@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Math Tutoring For Kids</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-dashboard">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1>Math Tutoring For Kids</h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Billing</a></li>
+                <li><a href="#" id="logout-btn" class="btn-nav">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="user-profile">
+                    <div class="avatar">👤</div>
+                    <div class="user-info">
+                        <p class="user-name" id="user-name">Loading...</p>
+                        <p class="user-email" id="user-email">user@example.com</p>
+                    </div>
+                </div>
+                <nav class="sidebar-menu">
+                    <a href="#" class="menu-item active" data-section="overview">
+                        📊 Overview
+                    </a>
+                    <a href="#" class="menu-item" data-section="products">
+                        📦 My Products
+                    </a>
+                    <a href="#" class="menu-item" data-section="analytics">
+                        📈 Analytics
+                    </a>
+                    <a href="#" class="menu-item" data-section="settings">
+                        ⚙️ Settings
+                    </a>
+                    <a href="#" class="menu-item" data-section="billing">
+                        💳 Billing
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview-section" class="dashboard-section active">
+                <div class="section-header">
+                    <h2>Welcome Back!</h2>
+                    <p id="welcome-msg">Let's grow your business</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Total Visitors</p>
+                            <p class="stat-value" id="stat-visitors">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Revenue</p>
+                            <p class="stat-value" id="stat-revenue">$0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Orders</p>
+                            <p class="stat-value" id="stat-orders">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Rating</p>
+                            <p class="stat-value" id="stat-rating">4.8/5</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="actions-grid">
+                        <button class="action-btn">📝 Create New Campaign</button>
+                        <button class="action-btn">🎯 View Analytics</button>
+                        <button class="action-btn">📧 Send Email</button>
+                        <button class="action-btn">📱 Social Media</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>My Products</h2>
+                    <button class="btn btn-primary">+ New Product</button>
+                </div>
+                <div class="products-list" id="products-list">
+                    <p>Loading your products...</p>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Analytics</h2>
+                </div>
+                <div class="analytics-content">
+                    <div class="chart-placeholder">
+                        <p>📈 Traffic Over Time</p>
+                        <small>Chart will display here</small>
+                    </div>
+                    <div class="chart-placeholder">
+                        <p>💰 Revenue Breakdown</p>
+                        <small>Chart will display here</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label>Business Name</label>
+                        <input type="text" id="business-name" placeholder="Your business name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="settings-email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+            </section>
+
+            <!-- Billing Section -->
+            <section id="billing-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Billing & Subscription</h2>
+                </div>
+                <div class="billing-content">
+                    <div class="plan-card">
+                        <h3 id="current-plan">Pro Plan</h3>
+                        <p id="plan-price">$99/month</p>
+                        <p id="renewal-date">Renews on 2026-10-01</p>
+                        <button class="btn btn-secondary">Change Plan</button>
+                        <button class="btn btn-secondary">Download Invoice</button>
+                    </div>
+                    <div class="payment-methods">
+                        <h3>Payment Methods</h3>
+                        <div class="payment-item">
+                            <p>💳 Card ending in 4242</p>
+                            <button class="btn-text">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
